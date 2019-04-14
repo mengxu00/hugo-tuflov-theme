@@ -311,15 +311,95 @@ $(document).ready(function () {
 
 <div id="hugo-tuflove-theme" class="section level1">
 <h1>Hugo Tuflove Theme</h1>
-<p>Edward Tufte uses a distinctive style in his handouts: simple, with well-set typography, extensive sidenotes, and tight integration of graphics and charts. This project brings Tufte style theme with navigation bars to Hugo.</p>
+<p>Edward Tufte uses a distinctive style in his handouts: simple, with well-set typography, extensive sidenotes, and tight integration of graphics and charts. This project brings Tufte style to Hugo with responsive navigation bars.</p>
 <p>This project is directly inspired by and based on</p>
 <ul>
 <li><a href="https://github.com/edwardtufte/tufte-css">Tufte CSS</a> - The Tufte style sheet for HTML documents</li>
 <li><a href="https://www.w3schools.com/w3css/">W3.CSS</a> - A CSS framework with simple and beautiful navigation bars</li>
 <li><a href="https://gohugo.io/">Hugo</a> - The content management framework used</li>
 </ul>
-<div id="how-hugo-tuflove-is-built" class="section level2">
-<h2>How hugo-tuflove is built</h2>
+<div id="how-this-template-is-built" class="section level2">
+<h2>How this template is built</h2>
+<p>This tutorial will show how to creat a simple theme in Hugo. The initial goals are very simple</p>
+<ul>
+<li>To make a blog template which supports Tufte style sidenotes.</li>
+<li>To add navigation bars to organize categories and topic groups.</li>
+<li>To automatically generate article indeces.</li>
+</ul>
+<p>I assume you are familliar with HTML, CSS, and Markdown. I’ll mainly explain how templates serve as dynamic content processors in Hugo, and how to organize templates to form a theme.</p>
+</div>
+<div id="install-hugo" class="section level2">
+<h2>install Hugo</h2>
+<p>I’m a Mac user. So I’ll use Homebrew to install Hugo. if you are using Window, Linux, or BSD operating systems, please refer to Hugo installation documents. Overall a quite easy step.</p>
+<pre><code>$ brew install hugo
+$ hugo version
+Hugo Static Site Generator v0.52/extended darwin/amd64 BuildDate: unknown</code></pre>
+<p>That’s it. Hugo installation completed.</p>
+</div>
+<div id="create-a-new-site" class="section level2">
+<h2>Create a new site</h2>
+<p>Let’s use Hugo to create a new site. I creat mine in my project folder.</p>
+<pre><code>$ hugo new site exampleSite
+Congratulations! Your new Hugo site is created in /Users/mxu/Projects/Writing/hugo-tuflove-theme/exampleSite.
+
+Just a few more steps and you&#39;re ready to go:
+
+1. Download a theme into the same-named folder.
+   Choose a theme from https://themes.gohugo.io/, or
+   create your own with the &quot;hugo new theme &lt;THEMENAME&gt;&quot; command.
+2. Perhaps you want to add some content. You can add single files
+   with &quot;hugo new &lt;SECTIONNAME&gt;/&lt;FILENAME&gt;.&lt;FORMAT&gt;&quot;.
+3. Start the built-in live server via &quot;hugo server&quot;.
+
+Visit https://gohugo.io/ for quickstart guide and full documentation.
+
+$ ls -l exampleSite/
+total 8
+drwxr-xr-x  3 mxu  staff  96 Apr 13 23:05 archetypes
+-rw-r--r--  1 mxu  staff  82 Apr 13 23:05 config.toml
+drwxr-xr-x  2 mxu  staff  64 Apr 13 23:05 content
+drwxr-xr-x  2 mxu  staff  64 Apr 13 23:05 data
+drwxr-xr-x  2 mxu  staff  64 Apr 13 23:05 layouts
+drwxr-xr-x  2 mxu  staff  64 Apr 13 23:05 static
+drwxr-xr-x  2 mxu  staff  64 Apr 13 23:05 themes</code></pre>
+<p>The content/ directory is used to store markdown format posts. It is empty for a new site.</p>
+<p>The other directories are used when costomizing a theme. Please ignore them for now.</p>
+</div>
+<div id="create-new-posts" class="section level2">
+<h2>Create new posts</h2>
+</div>
+<div id="generate-html-from-markdown-for-the-new-site" class="section level2">
+<h2>Generate HTML from Markdown for the new site</h2>
+</div>
+<div id="create-a-skeleton-theme" class="section level2">
+<h2>Create a skeleton theme</h2>
+</div>
+<div id="create-a-static-homepage" class="section level2">
+<h2>Create a static homepage</h2>
+</div>
+<div id="add-content-to-the-homepage" class="section level2">
+<h2>Add content to the homepage</h2>
+</div>
+<div id="add-content-to-the-posts" class="section level2">
+<h2>Add content to the posts</h2>
+</div>
+<div id="creat-a-post-listing" class="section level2">
+<h2>Creat a post listing</h2>
+</div>
+<div id="create-top-level-pages" class="section level2">
+<h2>Create top level pages</h2>
+</div>
+<div id="create-the-header-and-footer-partials" class="section level2">
+<h2>Create the Header and Footer Partials</h2>
+</div>
+<div id="update-the-home-page-template-to-use-the-partials" class="section level2">
+<h2>Update the Home Page Template to Use the Partials</h2>
+</div>
+<div id="update-the-default-single-template-to-use-the-partials" class="section level2">
+<h2>Update the Default Single Template to Use the Partials</h2>
+</div>
+<div id="add-date-published-to-posts-and-template" class="section level2">
+<h2>Add “Date Published” to Posts and template</h2>
 </div>
 <div id="license" class="section level2">
 <h2>License</h2>
