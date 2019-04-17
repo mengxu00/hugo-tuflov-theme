@@ -8,6 +8,17 @@ This project is directly inspired by and based on
 * [W3.CSS](https://www.w3schools.com/w3css/) - A CSS framework with simple and beautiful navigation bars
 * [Hugo](https://gohugo.io/) - The content management framework used
 
+## Why you need a theme for writing
+Wrting is a process of formulating coherent ideas. When you are writing, you want to focus on the content solely. Publishing is a process of presentation. 
+
+A good content management system with an aethetic theme will help you focus on content instead of formating. Writing is a hard practice. When you are doing hard things it is helpful to minimize distrations so you can focus on formulating coherent ideas. 
+
+Publishing your writings on the web is a great way to share ideas. In order to let people and yourself to read effectively, you need to publish in HTML format, which can be interpreted and presented by web browsers. So ideally you will be able to write in plain text or markdown and leave the HTML generation task to a content management system.
+
+Content management system does two things, formating and indexing. 
+
+There are hundreds of 
+
 ## How this template is built
 This tutorial will show how to creat a simple theme in Hugo. The initial goals are very simple
 
@@ -161,8 +172,8 @@ Press Ctrl+C to stop
 Connet to the listed URL (http://localhost:1313/). You might see a blank page sicnce there's no HTML file in public/ folder. To veryfy the built-in web server, you can manually add "index.xml" or "sitemap.xml" to the URL. For example, http://localhost:1313/index.xml or http://localhost:1313/sitemap.xml should show content of these two xml files.
 
 
-## Create a skeleton theme
-
+## Create a new theme
+We are going the create a new theme called tuflove
 ## Create a static homepage
 
 ## Add content to the homepage
