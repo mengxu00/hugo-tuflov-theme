@@ -9,9 +9,9 @@ This project is directly inspired by and based on
 * [Hugo](https://gohugo.io/) - The content management framework used
 
 ## Why you need a theme for writing
-Wrting is a process of formulating coherent ideas. When you are writing, you want to focus on the content solely. Publishing is a process of presentation. 
+Wrting is a process of formulating coherent ideas. A good content management system decouples the writing process into two parts: content generation, and formating. This separation allows you to focus on content quality.
 
-A good content management system with an aethetic theme will help you focus on content instead of formating. Writing is a hard practice. When you are doing hard things it is helpful to minimize distrations so you can focus on formulating coherent ideas. 
+Format matters because contents need to be coded, in HTML for example, in order to be readible. 
 
 Publishing your writings on the web is a great way to share ideas. In order to let people and yourself to read effectively, you need to publish in HTML format, which can be interpreted and presented by web browsers. So ideally you will be able to write in plain text or markdown and leave the HTML generation task to a content management system.
 
