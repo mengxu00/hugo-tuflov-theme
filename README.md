@@ -173,7 +173,35 @@ Connet to the listed URL (http://localhost:1313/). You might see a blank page si
 
 
 ## Create a new theme
-We are going the create a new theme called tuflove
+Hugo doesn't come with a default theme. We are going the create a new theme called tuflove (Tufte theme for Hugo lovers).
+
+### Create a skeleton
+```
+$ hugo new theme tuflove
+Creating theme at /Users/mxu/Projects/Writing/hugo-tuflove-theme/exampleSite/themes/tuflove
+
+$ find themes -type f | xargs ls -l
+-rw-r--r--  1 mxu  staff  1081 May 27 22:03 themes/tuflove/LICENSE
+-rw-r--r--  1 mxu  staff     8 May 27 22:03 themes/tuflove/archetypes/default.md
+-rw-r--r--  1 mxu  staff     0 May 27 22:03 themes/tuflove/layouts/404.html
+-rw-r--r--  1 mxu  staff   250 May 27 22:03 themes/tuflove/layouts/_default/baseof.html
+-rw-r--r--  1 mxu  staff     0 May 27 22:03 themes/tuflove/layouts/_default/list.html
+-rw-r--r--  1 mxu  staff     0 May 27 22:03 themes/tuflove/layouts/_default/single.html
+-rw-r--r--  1 mxu  staff     0 May 27 22:03 themes/tuflove/layouts/index.html
+-rw-r--r--  1 mxu  staff     0 May 27 22:03 themes/tuflove/layouts/partials/footer.html
+-rw-r--r--  1 mxu  staff     0 May 27 22:03 themes/tuflove/layouts/partials/head.html
+-rw-r--r--  1 mxu  staff     0 May 27 22:03 themes/tuflove/layouts/partials/header.html
+-rw-r--r--  1 mxu  staff   433 May 27 22:03 themes/tuflove/theme.toml
+```
+
+This skeleton includes templates (files ending in.html), license file, a description of your theme (theme.toml), and an empty archetype. Filling out he themoe.toml and LISENCE.md is optional. But it would be nice to declare them if you would like to distribute your theme.
+
+Note that templete files at this skeleton stage are still empty. But we will change that and make them beautiful shortly.
+
+### Update the Configure file to use the theme
+
+
+
 ## Create a static homepage
 
 ## Add content to the homepage
