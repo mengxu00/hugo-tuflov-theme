@@ -177,21 +177,21 @@ Hugo doesn't come with a default theme. We are going the create a new theme call
 
 ### Create a skeleton
 ```
-$ hugo new theme tuflove
-Creating theme at /Users/mxu/Projects/Writing/hugo-tuflove-theme/exampleSite/themes/tuflove
+$ hugo new theme tuflov
+Creating theme at /Users/mxu/Projects/Writing/hugo-tuflove-theme/exampleSite/themes/tuflov
 
 $ find themes -type f | xargs ls -l
--rw-r--r--  1 mxu  staff  1081 May 27 22:03 themes/tuflove/LICENSE
--rw-r--r--  1 mxu  staff     8 May 27 22:03 themes/tuflove/archetypes/default.md
--rw-r--r--  1 mxu  staff     0 May 27 22:03 themes/tuflove/layouts/404.html
--rw-r--r--  1 mxu  staff   250 May 27 22:03 themes/tuflove/layouts/_default/baseof.html
--rw-r--r--  1 mxu  staff     0 May 27 22:03 themes/tuflove/layouts/_default/list.html
--rw-r--r--  1 mxu  staff     0 May 27 22:03 themes/tuflove/layouts/_default/single.html
--rw-r--r--  1 mxu  staff     0 May 27 22:03 themes/tuflove/layouts/index.html
--rw-r--r--  1 mxu  staff     0 May 27 22:03 themes/tuflove/layouts/partials/footer.html
--rw-r--r--  1 mxu  staff     0 May 27 22:03 themes/tuflove/layouts/partials/head.html
--rw-r--r--  1 mxu  staff     0 May 27 22:03 themes/tuflove/layouts/partials/header.html
--rw-r--r--  1 mxu  staff   433 May 27 22:03 themes/tuflove/theme.toml
+-rw-r--r--  1 mxu  staff  1081 May 29 23:09 themes/tuflov/LICENSE
+-rw-r--r--  1 mxu  staff     8 May 29 23:09 themes/tuflov/archetypes/default.md
+-rw-r--r--  1 mxu  staff     0 May 29 23:09 themes/tuflov/layouts/404.html
+-rw-r--r--  1 mxu  staff   250 May 29 23:09 themes/tuflov/layouts/_default/baseof.html
+-rw-r--r--  1 mxu  staff     0 May 29 23:09 themes/tuflov/layouts/_default/list.html
+-rw-r--r--  1 mxu  staff     0 May 29 23:09 themes/tuflov/layouts/_default/single.html
+-rw-r--r--  1 mxu  staff     0 May 29 23:09 themes/tuflov/layouts/index.html
+-rw-r--r--  1 mxu  staff     0 May 29 23:09 themes/tuflov/layouts/partials/footer.html
+-rw-r--r--  1 mxu  staff     0 May 29 23:09 themes/tuflov/layouts/partials/head.html
+-rw-r--r--  1 mxu  staff     0 May 29 23:09 themes/tuflov/layouts/partials/header.html
+-rw-r--r--  1 mxu  staff   432 May 29 23:09 themes/tuflov/theme.toml
 ```
 
 This skeleton includes templates (files ending in.html), license file, a description of your theme (theme.toml), and an empty archetype. Filling out he themoe.toml and LISENCE.md is optional. But it would be nice to declare them if you would like to distribute your theme.
@@ -199,8 +199,56 @@ This skeleton includes templates (files ending in.html), license file, a descrip
 Note that templete files at this skeleton stage are still empty. But we will change that and make them beautiful shortly.
 
 ### Update the Configure file to use the theme
+Now that we have a theme to test with. It is a good idea to add the theme name to the configuration file. An alter native way is to add "-t tuflov" to explicitely specify theme in command line. 
 
+```
+$ vi config.toml
 
+theme = "tuflov"
+baseURL = ""
+languageCode = "en-us"
+title = "tuflov - Tufte for Hugo lovers"
+```
+
+### Gererate the site with the skeleton theme
+Now let's generatethe site again with the empty theme
+```
+$ hugo --verbose
+INFO 2019/05/29 23:17:03 No translation bundle found for default language "en"
+INFO 2019/05/29 23:17:03 Translation func for language en not found, use default.
+INFO 2019/05/29 23:17:03 i18n not initialized; if you need string translations, check that you have a bundle in /i18n that matches the site language or the default language.
+INFO 2019/05/29 23:17:03 Using config file: /Users/mxu/Projects/Writing/hugo-tuflov-theme/exampleSite/config.toml
+Building sites … INFO 2019/05/29 23:17:03 syncing static files to /Users/mxu/Projects/Writing/hugo-tuflov-theme/exampleSite/public/
+
+                   | EN
++------------------+----+
+  Pages            |  3
+  Paginator pages  |  0
+  Non-page files   |  0
+  Static files     |  0
+  Processed images |  0
+  Aliases          |  0
+  Sitemaps         |  1
+  Cleaned          |  0
+
+Total in 25 ms
+```
+
+Content vs. static
+Hugo does two things when generating the site. It uses templates to transform content into HTML and it copies static files into the site. Unlike content, static files are not transformed. They are copied exactly as they are.
+
+Hugo assumes that your site will use both CSS and JavaScript, so it creates directories in your theme to hold them. Remember opinions? Well, Hugo's opinion is that you'll store your CSS in a directory named css/ and your JavaScript in a directory named js/. If you don't like that, you can change the directory names in your theme directory or even delete them completely. Hugo's nice enough to offer its opinion, then behave nicely if you disagree.
+```
+$ find themes/tuflov -type d | xargs ls -ld
+drwxr-xr-x  7 mxu  staff  224 May 29 23:14 themes/tuflov
+drwxr-xr-x  3 mxu  staff   96 May 29 23:14 themes/tuflov/archetypes
+drwxr-xr-x  6 mxu  staff  192 May 29 23:14 themes/tuflov/layouts
+drwxr-xr-x  5 mxu  staff  160 May 29 23:14 themes/tuflov/layouts/_default
+drwxr-xr-x  5 mxu  staff  160 May 29 23:14 themes/tuflov/layouts/partials
+drwxr-xr-x  4 mxu  staff  128 May 29 23:14 themes/tuflov/static
+drwxr-xr-x  2 mxu  staff   64 May 29 23:14 themes/tuflov/static/css
+drwxr-xr-x  2 mxu  staff   64 May 29 23:14 themes/tuflov/static/js
+```
 
 ## Create a static homepage
 
