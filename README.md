@@ -234,7 +234,7 @@ Building sites … INFO 2019/05/29 23:17:03 syncing static files to /Users/mxu/P
 Total in 25 ms
 ```
 
-Content vs. static
+### Content vs. static
 Hugo does two things when generating the site. It uses templates to transform content into HTML and it copies static files into the site. Unlike content, static files are not transformed. They are copied exactly as they are.
 
 Hugo assumes that your site will use both CSS and JavaScript, so it creates directories in your theme to hold them. Remember opinions? Well, Hugo's opinion is that you'll store your CSS in a directory named css/ and your JavaScript in a directory named js/. If you don't like that, you can change the directory names in your theme directory or even delete them completely. Hugo's nice enough to offer its opinion, then behave nicely if you disagree.
@@ -250,9 +250,56 @@ drwxr-xr-x  2 mxu  staff   64 May 29 23:14 themes/tuflov/static/css
 drwxr-xr-x  2 mxu  staff   64 May 29 23:14 themes/tuflov/static/js
 ```
 
+## Theme development cycle
+When you're developing a theme, you will make changes (in the theme dir), rebuild the site, and check your chages (in the browser).
+1. Purge he the Public/ directory.
+2. Run the build in web server in watch mode.
+3. review your site in a browser.
+4. Update theme.
+5. Return to step 3.
+
+## Theme development commands
+Use the following commands as the basis of your workflow
+```
+# purger old public, static files
+$ rm -rf public
+
+# run hugo in watch mode
+$ hugo server --watch --verbose
+
+```
+
 ## Create a static homepage
+Right now, there is no homepage yet. Hogo server will look for one of three files inthe the them's layout/ directory
+1. index.html
+2. \_default/list.html
+3. \_default/single.html
+
+We could update one tof the default template, but a good design decision is to update the *most specific* template available. That is not a hard and fast rule, but it is a good generalization.
+
+Right now, that page is empty because we don;t have an content or any logic in the template. Let's change that by adding some text to the template.
+```
+$ vi themes/tuflov/layouts/index.html
+<!DOCTYPE html> 
+<html> 
+<body> 
+  <p>hugo says hello!</p> 
+</body> 
+</html> 
+:wq
+
+$
+```
+Build the web site and you'll be able to see a index.html being created under the public/ directory. Note that if you are running the server with the --watch option, the file may not be created. But you'll be able to see the change in a browser.
 
 ## Add content to the homepage
+Creating a static home page is a successful start point. Now let's create some content to the site. We'll display posts as a list on the home page and on their own page, too.
+
+Hugo has a command to generate a skeleton post, just like it does for sites and themes.
+```
+$ hugo --verbose new post/first.md
+```
+
 
 ## Add content to the posts
 
