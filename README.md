@@ -292,16 +292,191 @@ $
 ```
 Build the web site and you'll be able to see a index.html being created under the public/ directory. Note that if you are running the server with the --watch option, the file may not be created. But you'll be able to see the change in a browser.
 
-## Add content to the homepage
+## Add content to the posts
 Creating a static home page is a successful start point. Now let's create some content to the site. We'll display posts as a list on the home page and on their own page, too.
 
 Hugo has a command to generate a skeleton post, just like it does for sites and themes.
 ```
 $ hugo --verbose new post/first.md
+
+INFO 2019/06/06 20:09:08 No translation bundle found for default language "en"
+INFO 2019/06/06 20:09:08 Translation func for language en not found, use default.
+INFO 2019/06/06 20:09:08 i18n not initialized; if you need string translations, check that you have a bundle in /i18n that matches the site language or the default language.
+INFO 2019/06/06 20:09:08 Using config file: /Users/mxu/Projects/Writing/hugo-tuflov-theme/exampleSite/config.toml
+INFO 2019/06/06 20:09:08 attempting to create "post/first.md" of "post" of ext ".md"
+/Users/mxu/Projects/Writing/hugo-tuflov-theme/exampleSite/content/post/first.md created
 ```
 
+```
+cat  /Users/mxu/Projects/Writing/hugo-tuflov-theme/exampleSite/content/post/first.md
 
-## Add content to the posts
+---
+title: "First"
+date: 2019-06-06T20:09:08-07:00
+draft: true
+---
+```
+
+Hogo uses an archetype to create the post file. We can create an archetype file specifically for the post type
+```
+$ vi themes/tuflov/archetypes/post.md
+
+---
+Description: ""
+Tags: []
+Categories: []
+draft: true
+---
+:wq
+
+$ find themes/tuflov/archetypes/ -type f | xargs ls -l
+-rw-r--r--  1 mxu  staff   8 May 29 23:14 themes/tuflov/archetypes//default.md
+-rw-r--r--  1 mxu  staff  60 Jun  6 20:31 themes/tuflov/archetypes//post.md
+
+
+$ hugo --verbose new post/second.md
+INFO 2019/06/06 20:32:58 No translation bundle found for default language "en"
+INFO 2019/06/06 20:32:58 Translation func for language en not found, use default.
+INFO 2019/06/06 20:32:58 i18n not initialized; if you need string translations, check that you have a bundle in /i18n that matches the site language or the default language.
+INFO 2019/06/06 20:32:58 Using config file: /Users/mxu/Projects/Writing/hugo-tuflov-theme/exampleSite/config.toml
+INFO 2019/06/06 20:32:58 attempting to create "post/second.md" of "post" of ext ".md"
+/Users/mxu/Projects/Writing/hugo-tuflov-theme/exampleSite/content/post/second.md created
+
+
+$ ls -l content/post/
+total 16
+-rw-r--r--  1 mxu  staff  68 Jun  6 20:09 first.md
+-rw-r--r--  1 mxu  staff  60 Jun  6 20:32 second.md
+
+
+$ cat content/post/first.md
+---
+title: "First"
+date: 2019-06-06T20:09:08-07:00
+draft: true
+---
+
+```
+
+Hugo uses the section and type to find the template file for every content file. Hugo will first look for a template ile that matches the section or type name. If it can't find one, then it will look in the \_default/ directory. For now we can assume that Hugo will try posts/single.html, them \_defult/single.html
+```
+$ find themes/tuflov/ -name single.html | xargs ls -l
+-rw-r--r--  1 mxu  staff  0 May 29 23:14 themes/tuflov//layouts/_default/single.html
+```
+
+We could create a new template, /posts/single.html, or change the default. 
+
+Let's start with updating the default. It is good to start here because we can stat to build the basic layout for the site. As we add more content types we'll frfactor this file and move logic around. 
+
+### update the tempalte file
+```
+$ vi themes/tuflov//layouts/_default/single.html
+<!DOCTYPE html>
+<html>
+<head>
+  <title>{{ .Title }}</title>
+</head>
+<body>
+  <h1>{{ .Title }}</h1>
+  {{ .Content }}
+</body>
+</html>
+:wq
+```
+
+Build the web site and verify the results.
+```
+$ rm -rf public
+$ hugo --verbose
+
+INFO 2019/06/06 23:35:19 No translation bundle found for default language "en"
+INFO 2019/06/06 23:35:19 Translation func for language en not found, use default.
+INFO 2019/06/06 23:35:19 i18n not initialized; if you need string translations, check that you have a bundle in /i18n that matches the site language or the default language.
+INFO 2019/06/06 23:35:19 Using config file: /Users/mxu/Projects/Writing/hugo-tuflov-theme/exampleSite/config.toml
+Building sites … INFO 2019/06/06 23:35:19 syncing static files to /Users/mxu/Projects/Writing/hugo-tuflov-theme/exampleSite/public/
+INFO 2019/06/06 23:35:19 found taxonomies: map[string]string{"tag":"tags", "category":"categories"}
+
+                   | EN
++------------------+----+
+  Pages            |  7
+  Paginator pages  |  0
+  Non-page files   |  0
+  Static files     |  0
+  Processed images |  0
+  Aliases          |  0
+  Sitemaps         |  1
+  Cleaned          |  0
+
+Total in 13 ms
+
+
+$ find public -type f -name '*.html' | xargs ls -l
+-rw-r--r--  1 mxu  staff  126 Jun  6 23:35 public/index.html
+-rw-r--r--  1 mxu  staff  104 Jun  6 23:35 public/posts/first/index.html
+-rw-r--r--  1 mxu  staff  106 Jun  6 23:35 public/posts/second/index.html
+```
+Notice that the posts now have content. You can go to localhost:1313/posts/first/ to verify.
+
+
+
+
+## Add content to the homepage
+The home page will contain a list of posts. Let's update its template to add the posts that we just created.
+```
+$ vi themes/tuflov/layouts/index.html
+
+<!DOCTYPE html>
+<html>
+<body>
+  <p>hugo says hello!</p>
+  {{ range first 10 .Data.Pages }}
+    <h1>{{ .Title }}</h1>
+  {{ end }}
+</body>
+</html>
+:wq
+```
+
+Hugo uses the Go template engine. That engine scans the template files for commands which ar enclosed between "{{" and "}}". In this template ,the commands are:
+1. range
+2. .Title
+3. end
+The "range" command is an iterator. We use it to loop through the first ten pages. Every HTML file that ugo createds is trated as a page, so looping through the list of pages will look at every file that will be created.
+
+The ".Title" command print the value to the "title" variable. Hugo pulls it from the front matter in the Markdown file.
+
+The "end" command signals the ened of the range iterator. The engine loops back to the top of the iteration when it finds "end"
+
+Build the web site and then veryfy the resutls.
+```
+$ rm -rf public
+$ hugo --verbose
+
+INFO 2019/06/06 23:23:39 No translation bundle found for default language "en"
+INFO 2019/06/06 23:23:39 Translation func for language en not found, use default.
+INFO 2019/06/06 23:23:39 i18n not initialized; if you need string translations, check that you have a bundle in /i18n that matches the site language or the default language.
+INFO 2019/06/06 23:23:39 Using config file: /Users/mxu/Projects/Writing/hugo-tuflov-theme/exampleSite/config.toml
+Building sites … INFO 2019/06/06 23:23:39 syncing static files to /Users/mxu/Projects/Writing/hugo-tuflov-theme/exampleSite/public/
+INFO 2019/06/06 23:23:39 found taxonomies: map[string]string{"tag":"tags", "category":"categories"}
+
+                   | EN
++------------------+----+
+  Pages            |  5
+  Paginator pages  |  0
+  Non-page files   |  0
+  Static files     |  0
+  Processed images |  0
+  Aliases          |  0
+  Sitemaps         |  1
+  Cleaned          |  0
+
+Total in 4 ms
+
+
+```
+### Link list items to context
+
+
 
 ## Creat a post listing
 
