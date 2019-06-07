@@ -3,7 +3,7 @@
 <body> 
   <p>hugo says hello!</p>
   {{ range first 10 .Data.Pages }}
-    <h1>{{ .Title }}</h1>
+    <h1><a href="{{ .Permalink }}">{{ .Title }}</h1>
   {{ end }} 
 </body> 
 </html> 

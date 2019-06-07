@@ -475,7 +475,21 @@ Total in 4 ms
 
 ```
 ### Link list items to context
-
+The posts are listed on the home page. Let's add a link from there to the post. Since this is the home page, we'll update its template.
+```
+$ vi themes/tuflov/layouts/index.html
+<!DOCTYPE html> 
+<html> 
+<body> 
+  <p>hugo says hello!</p>
+  {{ range first 10 .Data.Pages }}
+    <h1><a href="{{ .Permalink }}">{{ .Title }}</h1>
+  {{ end }} 
+</body> 
+</html> 
+:wq
+```
+Build the web site and verify the results.
 
 
 ## Creat a post listing
