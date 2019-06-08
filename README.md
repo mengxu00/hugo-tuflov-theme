@@ -493,6 +493,15 @@ Build the web site and verify the results.
 
 
 ## Creat a post listing
+We have the posts displaying on individual pages and on the home page. It is also useful to create a list of all posts (not just the first ten).
+
+Let's use the default list template as a starting point.
+```
+$ find themes/tuflov -name list.html | xargs ls -l
+-rw-r--r--  1 mxu  staff  0 May 29 23:14 themes/tuflov/layouts/_default/list.html
+```
+
+Hugo content list documents can be found from [Here](https://gohugo.io/templates/lists/).
 
 ## Create top level pages
 
