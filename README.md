@@ -502,8 +502,81 @@ $ find themes/tuflov -name list.html | xargs ls -l
 ```
 
 Hugo content list documents can be found from [Here](https://gohugo.io/templates/lists/).
+```
+$ vi themes/tuflov/layouts/_default/list.html
+
+{{ define "main" }}
+<main>
+    <article>
+        <header>
+            <h1>{{.Title}}</h1>
+        </header>
+        <!-- "{{.Content}}" pulls from the markdown content of the corresponding _index.md -->
+        {{.Content}}
+    </article>
+    <ul>
+    <!-- Ranges through content/posts/*.md -->
+    {{ range .Pages }}
+        <li>
+            <a href="{{.Permalink}}">{{.Date.Format "2006-01-02"}} | {{.Title}}</a>
+        </li>
+    {{ end }}
+    </ul>
+</main>
+{{ end }}
+```
+The above list template will output the following html:
+```
+public/posts/index.html
+<!DOCTYPE html>
+<html>
+<body>
+  <p>hugo says hello!</p>
+
+    <h1><a href="/posts/second/">Second</h1>
+
+    <h1><a href="/posts/first/">First</h1>
+
+</body>
+</html>
+```
 
 ## Create top level pages
+Let's create a 'About' page to display at the top level.
+```
+$ vi content/about.md 
+---
+title: "About"
+description: "about this site"
+date: 2019-06-15T16:00:33-07:00
+draft: false
+slug: "about time"
+---
+
+## about us
+
+i'm speechless
+:wq
+```
+Rebuild the web site:
+```
+cat public/about-time/index.html
+<!DOCTYPE html>
+<html>
+<head>
+  <title>About</title>
+</head>
+<body>
+  <h1>About</h1>
+
+
+<h2 id="about-us">about us</h2>
+
+<p>i&rsquo;m speechless</p>
+
+</body>
+</html>
+```
 
 
 ## Create the Header and Footer Partials
