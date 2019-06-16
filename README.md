@@ -550,7 +550,7 @@ title: "About"
 description: "about this site"
 date: 2019-06-15T16:00:33-07:00
 draft: false
-slug: "about time"
+slug: "about"
 ---
 
 ## about us
@@ -578,17 +578,173 @@ cat public/about-time/index.html
 </html>
 ```
 
+Notice that the 'About' page was created under the directory defined by the 'slug' tage in about.md.
+
+The 'About' page also being listed on the home page. This is undesired. 
+```
+cat public/index.html
+<!DOCTYPE html>
+<html>
+<body>
+  <p>This is the home page</p>
+
+    <h1><a href="/about/">About</h1>
+
+    <h1><a href="/posts/second/">Second</h1>
+
+    <h1><a href="/posts/first/">First</h1>
+
+</body>
+</html>
+```
+
+Let's change that.
+```
+$ vi themes/tuflov/layouts/index.html
+
+<!DOCTYPE html>
+<html>
+<body>
+  <p>This is the home page</p>
+  <h1>posts</h1>
+  {{ range first 10 .Data.Pages }}
+    {{ if eq .Type "post"}}
+      <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
+    {{ end }}
+  {{ end }}
+
+  <h1>pages</h1>
+  {{ range .Data.Pages }}
+    {{ if eq .Type "page" }}
+      <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
+    {{ end }}
+  {{ end }}
+</body>
+</html>
+:wq
+```
+Regenerage the web site. Now the home page has two sections, posts and pages. Each section has the right set of heading s and links in it.
 
 ## Create the Header and Footer Partials
+A partial is a chunk of html code stored in a file so that it can be reused frequently. 
+```
+$ vi themes/tuflov/layouts/partials/header.html
+
+<!DOCTYPE html>
+<html>
+<head>
+        <title>{{ .Title }}</title>
+</head>
+<body>
+:wq
+
+vi themes/tuflov/layouts/partials/footer.html
+
+</body>
+</html>
+:wq
+```
 
 ## Update the Home Page Template to Use the Partials
+The most noticeable difference between a template call and a partials call is the lack of path:
+```
+{{ template "theme/partials/header.html" . }}
+```
+versus
+```
+{{ partial "header.html" . }}
+```
+Both pass in the context. Let's chagen the home page template to use these new partials.
+
+```
+$ vi themes/tuflov/layouts/index.html
+
+{{ partial "header.html" . }}
+  <p>This is the home page</p>
+  <h1>posts</h1>
+  {{ range first 10 .Data.Pages }}
+    {{ if eq .Type "posts"}}
+      <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
+    {{ end }}
+  {{ end }}
+
+  <h1>pages</h1>
+  {{ range .Data.Pages }}
+    {{ if eq .Type "page" }}
+      <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
+    {{ end }}
+  {{ end }}
+
+
+{{ partial "footer.html" . }}
+```
 
 ## Update the Default Single Template to Use the Partials
+```
+$ vi themes/tuflov/layouts/_default/single.html
+
+{{ partial "header.html" . }}
+
+ <h1>{{ .Title }}</h1>
+  {{ .Content }}
+
+{{ partial "footer.html" . }}
+```
 
 ## Add “Date Published” to Posts and template
+Date is a common meta data being displayed on post pages. The front matter of our posts has a variable named "date". Let's display this value on post pages.
+We'll start by updating the template used torender the posts. The emplate code will look like:
+```
+{{ .Date.Format "Mon, Jan 2, 2006" }}
+```
+
+Posts uses the default single template, so we'll change that file.
+```
+$ vi themes/tuflov/layouts/_default/single.html
+
+{{ partial "header.html" . }}
+
+ <h1>{{ .Title }}</h1>
+ <h2> {{ .Date.Format "Mon, Jan 2, 2006" }} </h2>
+  {{ .Content }}
+
+{{ partial "footer.html" . }}
+
+```
+
+Generate the web site and verify the results. The posts now have the date displayed in them. However, the "about" page also has the date displayed.
+
+There are a couple of ways to make the fate display only on postes. We could do a "if" statement like we did on the home page. Another way would be a to create a separate template for postes.
+
+Let's create a new template type this time. This is called a section template.
+```
+$ mkdir themes/tuflov/layouts/posts
+$ vi themes/tuflov/layouts/_default/single.html
+{{ partial "header.html" . }}
+
+  <h1>{{ .Title }}</h1>
+  {{ .Content }}
+
+{{ partial "footer.html" . }}
+:wq
+```
+
+Now we'll update the posts' version of the single template. Hugo's template engine will buse this version over the default.
+```
+$ vi themes/tuflov/layouts/posts/single.html
+{{ partial "header.html" . }}
+
+  <h1>{{ .Title }}</h1>
+  <h2>{{ .Date.Format "Mon, Jan 2, 2006" }}</h2>
+  {{ .Content }}
+
+{{ partial "footer.html" . }}
+:wq
+```
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+
 
 ## Acknowledgments
 * Hat tip to anyone whose code was used
