@@ -7,6 +7,7 @@ This project is directly inspired by and based on
 * [Tufte CSS](https://github.com/edwardtufte/tufte-css) - The Tufte style sheet for HTML documents
 * [W3.CSS](https://www.w3schools.com/w3css/) - A CSS framework with simple and beautiful navigation bars
 * [Hugo](https://gohugo.io/) - The content management framework used
+* [Creating a new theme](https://github.com/digitalcraftsman/hugo-steam-theme/blob/master/exampleSite/content/post/creating-a-new-theme.md)
 
 ## Why you need a theme for writing
 Wrting is a process of formulating coherent ideas. A good content management system decouples the writing process into two parts: content generation, and formating. This separation allows you to focus on content quality.
@@ -741,6 +742,12 @@ $ vi themes/tuflov/layouts/posts/single.html
 {{ partial "footer.html" . }}
 :wq
 ```
+Note that we removed the date display from the default template and put it hin the post template. Generate the web site and verify the results. Postes have dates and the about page doesn't.
+
+
+## Add CSS to the template
+
+
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
