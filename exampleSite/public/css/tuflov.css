@@ -1,0 +1,15 @@
+﻿/* W3.CSS 4.13 June 2019 by Jan Egil and Borge Refsnes */
+article.post{
+	width: 36em;
+	margin: 0 auto;
+	margin-left:16px;
+	max-width: 100%;
+	line-height: 1.5;
+	font-size: 15px;
+}
+
+@media only screen and (max-width: 320px){
+	article.post{
+		font-size: 12px;
+	}
+}

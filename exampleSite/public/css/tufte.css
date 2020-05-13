@@ -83,7 +83,7 @@ article { position: relative;
           padding: 5rem 0rem; }
 
 section { padding-top: 1rem;
-          padding-bottom: 1rem; }
+          padding-bottom: 1rem;}
 
 p, ol, ul { font-size: 1.4rem;
             line-height: 2rem; }
@@ -91,7 +91,13 @@ p, ol, ul { font-size: 1.4rem;
 p { margin-top: 1.4rem;
     margin-bottom: 1.4rem;
     padding-right: 0;
-    vertical-align: baseline; }
+    vertical-align: baseline; 
+
+    text-overflow: ellipsis; /* will make [...] at the end */
+    width: 30px; /* change to your preferences */
+    white-space: nowrap; /* paragraph to one line */
+    overflow:hidden; /* older browsers */
+}
 
 /* Chapter Epigraphs */
 div.epigraph { margin: 5em 0; }
@@ -274,3 +280,8 @@ label.margin-toggle:not(.sidenote-number) { display: none; }
                             label { cursor: pointer; }
                             div.table-wrapper, table { width: 85%; }
                             img { width: 100%; } }
+
+
+section.a {
+  font-size: 3pt;
+}

@@ -6,10 +6,38 @@
     <description>Recent content on tuflov - Tufte for Hugo lovers</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 15 Jun 2019 16:00:33 -0700</lastBuildDate>
+    <lastBuildDate>Wed, 08 Apr 2020 23:12:41 -0700</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Relevance</title>
+      <link>/posts/relevance/</link>
+      <pubDate>Wed, 08 Apr 2020 23:12:41 -0700</pubDate>
+      
+      <guid>/posts/relevance/</guid>
+      <description> New Cool Posts </description>
+    </item>
+    
+    <item>
+      <title>Second</title>
+      <link>/posts/second/</link>
+      <pubDate>Tue, 18 Feb 2020 23:12:41 -0700</pubDate>
+      
+      <guid>/posts/second/</guid>
+      <description>`` ,okmnj8hufrddepo9&amp;rsquo;p0p&amp;rsquo;;khgdssdasxarf\5437uyyhjjnvcgftrt44e44r44447uukjkl,,kl,mymjhnyhbtuu6b7ht</description>
+    </item>
+    
+    <item>
+      <title>First</title>
+      <link>/posts/first/</link>
+      <pubDate>Tue, 18 Feb 2020 16:00:33 -0700</pubDate>
+      
+      <guid>/posts/first/</guid>
+      <description>This is the first paragraph
+Writing is a medium of human communication that represents language with signs and symbols. For languages that utilize a writing system, inscriptions can complement spoken language by creating a durable version of speech that can be stored for future reference or transmitted across distance. Writing, in other words, is not a language, but a tool used to make languages readable.[1] Within a language system, writing relies on many of the same structures as speech, such as vocabulary, grammar, and semantics, with the added dependency of a system of signs or symbols.</description>
+    </item>
     
     <item>
       <title>About</title>
@@ -17,25 +45,7 @@
       <pubDate>Sat, 15 Jun 2019 16:00:33 -0700</pubDate>
       
       <guid>/about/</guid>
-      <description>about us i&amp;rsquo;m speechless</description>
-    </item>
-    
-    <item>
-      <title>Second</title>
-      <link>/posts/second/</link>
-      <pubDate>Thu, 06 Jun 2019 23:12:41 -0700</pubDate>
-      
-      <guid>/posts/second/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>First</title>
-      <link>/posts/first/</link>
-      <pubDate>Thu, 06 Jun 2019 20:09:08 -0700</pubDate>
-      
-      <guid>/posts/first/</guid>
-      <description></description>
+      <description>A little goes a long way</description>
     </item>
     
   </channel>

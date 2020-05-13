@@ -1,8 +1,21 @@
 {{ partial "header.html" . }}
 
-  <h1>{{ .Title }}</h1>
-  <h2>{{ .Date.Format "Mon, Jan 2, 2006" }}</h2>
-  {{ .Content }}
+
+<!--
+<div class="w3-row w3-padding-64">
+  <div class="w3-half w3-container">
+    <h1>{{ .Title }}</h1>
+    <font  style="color:lightgray;" size=5pt>{{ .Date.Format "Mon, Jan 2, 2006" }}</font>
+  	  {{ .Content }}
+  </div>
+</div>
+-->
+
+<article class="post">
+	<h1>{{ .Title }}</h1>
+    <font  style="color:lightgray;" size=5pt>{{ .Date.Format "Jan 2, 2006" }}</font>
+  	  {{ .Content }}
+</article>
 
 {{ partial "footer.html" . }}
 

@@ -6,6 +6,4 @@ draft: false
 slug: "about"
 ---
 
-## about us
-
-i'm speechless
+A little goes a long way

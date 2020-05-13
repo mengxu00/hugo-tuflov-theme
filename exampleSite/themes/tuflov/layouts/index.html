@@ -1,5 +1,261 @@
 {{ partial "header.html" . }}
-  <p>This is the home page</p>
+<div class="w3-container">
+  <h1  style="color:lightgray;">Tools</h1>
+  <p> </p>
+
+  <hr class="w3-threequarter w3-center;">
+  <div class="w3-row-padding">
+    <h3  style="color:gray;">Courses</h3>
+
+  <!-- A figure -->
+    <div class="w3-col w3-quarter w3-center;">
+      <div class="w3-card w3-center w3-lightgray">
+        <div class="w3-container">
+          <a href="https://www.youtube.com/playlist?list=PL22J3VaeABQApSdW8X71Ihe34eKN6XhCi">
+            <p>2017 Personality and Its Transformations </p>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="w3-col w3-quarter w3-center;">
+      <div class="w3-card w3-center w3-lightgray">
+        <div class="w3-container">
+          <a href="https://see.stanford.edu/Course">
+            <p>Stanford Engineering Everywhere</p>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+<script>
+function weightConverter(source,valNum) {
+  valNum = parseFloat(valNum);
+  var inputPounds = document.getElementById("inputPounds");
+  var inputKilograms = document.getElementById("inputKilograms");
+  var inputOunces = document.getElementById("inputOunces");
+  var inputGrams = document.getElementById("inputGrams");
+  var inputStones = document.getElementById("inputStones");
+  if (source=="inputPounds") {
+    inputKilograms.value=(valNum/2.2046).toFixed(2);
+    inputOunces.value=(valNum*16).toFixed(2);
+    inputGrams.value=(valNum/0.0022046).toFixed();
+    inputStones.value=(valNum*0.071429).toFixed(3);
+  }
+  if (source=="inputKilograms") {
+    inputPounds.value=(valNum*2.2046).toFixed(2);
+    inputOunces.value=(valNum*35.274).toFixed(2);
+    inputGrams.value=(valNum*1000).toFixed();
+    inputStones.value=(valNum*0.1574).toFixed(3);
+  }
+  if (source=="inputOunces") {
+    inputPounds.value=(valNum*0.062500).toFixed(4);
+    inputKilograms.value=(valNum/35.274).toFixed(4);
+    inputGrams.value=(valNum/0.035274).toFixed(1);
+    inputStones.value=(valNum*0.0044643).toFixed(4);
+  }
+  if (source=="inputGrams") {
+    inputPounds.value=(valNum*0.0022046).toFixed(4);
+    inputKilograms.value=(valNum/1000).toFixed(4);
+    inputOunces.value=(valNum*0.035274).toFixed(3);
+    inputStones.value=(valNum*0.00015747).toFixed(5);
+  }
+  if (source=="inputStones") {
+    inputPounds.value=(valNum*14).toFixed(1);
+    inputKilograms.value=(valNum/0.15747).toFixed(1);
+    inputOunces.value=(valNum*224).toFixed();
+    inputGrams.value=(valNum/0.00015747).toFixed();
+  }
+
+}
+
+function temperatureConverter(source,valNum) {
+  valNum = parseFloat(valNum);
+  var inputFahrenheit = document.getElementById("inputFahrenheit");
+  var inputCelsius = document.getElementById("inputCelsius");
+  var inputKelvin = document.getElementById("inputKelvin");
+  if (source=="inputFahrenheit") {
+    inputCelsius.value=((valNum-32)/1.8).toFixed(2);
+    inputKelvin.value=(((valNum-32)/1.8)+273.15).toFixed(2);
+  }
+  if (source=="inputCelsius") {
+    inputFahrenheit.value=((valNum*1.8)+32).toFixed(2);
+    inputKelvin.value=((valNum)+273.15).toFixed(2);
+  }
+  if (source=="inputKelvin") {
+    inputFahrenheit.value=(((valNum-273.15)*1.8)+32).toFixed(2);
+    inputCelsius.value=((valNum)-273.15).toFixed(2);
+  }
+}
+
+function lengthConverter(source,valNum) {
+  valNum = parseFloat(valNum);
+  var inputFeet = document.getElementById("inputFeet");
+  var inputMeters = document.getElementById("inputMeters");
+  var inputInches = document.getElementById("inputInches");
+  var inputcm = document.getElementById("inputcm");
+  var inputYards = document.getElementById("inputYards");
+  var inputKilometers = document.getElementById("inputKilometers");
+  var inputMiles = document.getElementById("inputMiles");
+  if (source=="inputFeet") {
+    inputMeters.value=(valNum/3.2808).toFixed(2);
+    inputInches.value=(valNum*12).toFixed(2);
+    inputcm.value=(valNum/0.032808).toFixed();
+    inputYards.value=(valNum*0.33333).toFixed(2);
+    inputKilometers.value=(valNum/3280.8).toFixed(5);    
+    inputMiles.value=(valNum*0.00018939).toFixed(5);
+  }
+  if (source=="inputMeters") {
+    inputFeet.value=(valNum*3.2808).toFixed(2);
+    inputInches.value=(valNum*39.370).toFixed(2);
+    inputcm.value=(valNum/0.01).toFixed();
+    inputYards.value=(valNum*1.0936).toFixed(2);
+    inputKilometers.value=(valNum/1000).toFixed(5);    
+    inputMiles.value=(valNum*0.00062137).toFixed(5);
+  }
+  if (source=="inputInches") {
+    inputFeet.value=(valNum*0.083333).toFixed(3);
+    inputMeters.value=(valNum/39.370).toFixed(3);
+    inputcm.value=(valNum/0.39370).toFixed(2);
+    inputYards.value=(valNum*0.027778).toFixed(3);    
+    inputKilometers.value=(valNum/39370).toFixed(6);
+    inputMiles.value=(valNum*0.000015783).toFixed(6);
+  }
+  if (source=="inputcm") {
+    inputFeet.value=(valNum*0.032808).toFixed(3);
+    inputMeters.value=(valNum/100).toFixed(3);
+    inputInches.value=(valNum*0.39370).toFixed(2);
+    inputYards.value=(valNum*0.010936).toFixed(3);    
+    inputKilometers.value=(valNum/100000).toFixed(6);
+    inputMiles.value=(valNum*0.0000062137).toFixed(6);
+  }
+  if (source=="inputYards") {
+    inputFeet.value=(valNum*3).toFixed();
+    inputMeters.value=(valNum/1.0936).toFixed(2);
+    inputInches.value=(valNum*36).toFixed();
+    inputcm.value=(valNum/0.010936).toFixed();
+    inputKilometers.value=(valNum/1093.6).toFixed(5);
+    inputMiles.value=(valNum*0.00056818).toFixed(5);
+  }
+  if (source=="inputKilometers") {
+    inputFeet.value=(valNum*3280.8).toFixed();
+    inputMeters.value=(valNum*1000).toFixed();
+    inputInches.value=(valNum*39370).toFixed();
+    inputcm.value=(valNum*100000).toFixed();
+    inputYards.value=(valNum*1093.6).toFixed();
+    inputMiles.value=(valNum*0.62137).toFixed(2);    
+  }
+  if (source=="inputMiles") {
+    inputFeet.value=(valNum*5280).toFixed();
+    inputMeters.value=(valNum/0.00062137).toFixed();
+    inputInches.value=(valNum*63360).toFixed();
+    inputcm.value=(valNum/0.0000062137).toFixed();
+    inputYards.value=(valNum*1760).toFixed();
+    inputKilometers.value=(valNum/0.62137).toFixed(2);    
+  }
+}
+</script>
+
+<hr class="w3-threequarter">
+<!-- First row of tools -->
+<div class="w3-row-padding">
+  <h3  style="color:gray;">Unit converters</h3>
+  <!-- The weight converter -->
+  <div class="w3-col w3-quarter w3-center;">
+    <div class="w3-card w3-center w3-lightgray">
+      <h5 style="color:gray;">Weight</h5>
+    </div>
+    <div class="w3-row-padding" style="margin:0 -16px">
+      <div class="w3-half w3-margin-top">
+        <label>Pounds</label>
+        <input id="inputPounds" class="w3-input w3-border" type="number" placeholder="Pounds" oninput="weightConverter(this.id,this.value)" onchange="weightConverter(this.id,this.value)">
+      </div>
+      <div class="w3-half w3-margin-top">
+        <label>Kilograms</label>
+        <input id="inputKilograms" class="w3-input w3-border" type="number" placeholder="Kilograms" oninput="weightConverter(this.id,this.value)" onchange="weightConverter(this.id,this.value)">
+      </div>
+      <div class="w3-half w3-margin-top">
+        <label>Ounces</label>
+        <input id="inputOunces" class="w3-input w3-border" type="number" placeholder="Ounces" oninput="weightConverter(this.id,this.value)" onchange="weightConverter(this.id,this.value)">
+      </div>
+      <div class="w3-half w3-margin-top">
+        <label>Grams</label>
+        <input id="inputGrams" class="w3-input w3-border" type="number" placeholder="Grams" oninput="weightConverter(this.id,this.value)" onchange="weightConverter(this.id,this.value)">
+      </div>
+      <div class="w3-half w3-margin-top">
+        <label>Stones</label>
+        <input id="inputStones" class="w3-input w3-border" type="number" placeholder="Stones" oninput="weightConverter(this.id,this.value)" onchange="weightConverter(this.id,this.value)">
+      </div>
+    </div>
+  </div>
+
+<!-- The temperature converter -->
+  <div class="w3-col w3-quarter w3-center">
+    <div class="w3-card w3-center w3-lightgray">
+      <h5 style="color:gray;">Temperature </h5>
+    </div>
+    <div class="w3-row-padding"; style="margin:0 -16px">
+      <div class="w3-half w3-left w3-margin-top">
+        <label class="w3-left">Fahrenheit</label>
+        <input id="inputFahrenheit" class="w3-input w3-border" type="number" min="-459.66999999999996" placeholder="Fahrenheit" oninput="temperatureConverter(this.id,this.value)" onchange="temperatureConverter(this.id,this.value)">
+      </div>
+      <div class="w3-half w3-left w3-margin-top">
+        <label class="w3-left">Celsius</label>
+        <input id="inputCelsius" class="w3-input w3-border" type="number" min="-273.15" placeholder="Celsius" oninput="temperatureConverter(this.id,this.value)" onchange="temperatureConverter(this.id,this.value)">
+      </div>
+      <div class="w3-half w3-margin-top">
+        <label class="w3-left">Kelvin</label>
+        <input id="inputKelvin" class="w3-input w3-border" type="number" min="0" placeholder="Kelvin" oninput="temperatureConverter(this.id,this.value)" onchange="temperatureConverter(this.id,this.value)">
+      </div>
+    </div>
+  </div>
+
+<!-- The length converter -->
+<div class="w3-col w3-quarter w3-center">
+<div class="w3-card w3-center w3-lightgray">
+  <h5 style="color:gray;">Length</h5>
+</div>
+<div class="w3-row-padding" style="margin:0 -16px">
+  <div class="w3-half w3-margin-top">
+    <label class="w3-left">Feet</label>
+    <input id="inputFeet" class="w3-input w3-border" type="number" placeholder="Feet" oninput="lengthConverter(this.id,this.value)" onchange="lengthConverter(this.id,this.value)">
+  </div>
+  <div class="w3-half w3-margin-top">
+    <label class="w3-left">Meters</label>
+    <input id="inputMeters" class="w3-input w3-border" type="number" placeholder="Meters" oninput="lengthConverter(this.id,this.value)" onchange="lengthConverter(this.id,this.value)">
+  </div>
+  <div class="w3-half w3-margin-top">
+    <label class="w3-left">Inches</label>
+    <input id="inputInches" class="w3-input w3-border" type="number" placeholder="Inches" oninput="lengthConverter(this.id,this.value)" onchange="lengthConverter(this.id,this.value)">
+  </div>
+  <div class="w3-half w3-margin-top">
+    <label class="w3-left">cm</label>
+    <input id="inputcm" class="w3-input w3-border" type="number" placeholder="cm" oninput="lengthConverter(this.id,this.value)" onchange="lengthConverter(this.id,this.value)">
+  </div>
+  <div class="w3-half w3-margin-top">
+    <label class="w3-left">Yards</label>
+    <input id="inputYards" class="w3-input w3-border" type="number" placeholder="Yards" oninput="lengthConverter(this.id,this.value)" onchange="lengthConverter(this.id,this.value)">
+  </div>
+  <div class="w3-half w3-margin-top">
+    <label class="w3-left">Kilometers</label>
+    <input id="inputKilometers" class="w3-input w3-border" type="number" placeholder="Kilometers" oninput="lengthConverter(this.id,this.value)" onchange="lengthConverter(this.id,this.value)">
+  </div>
+  <div class="w3-half w3-margin-top">
+    <label class="w3-left">Miles</label>
+    <input id="inputMiles" class="w3-input w3-border" type="number" placeholder="Miles" oninput="lengthConverter(this.id,this.value)" onchange="lengthConverter(this.id,this.value)">
+  </div>
+</div>
+</div>
+
+
+</div>
+
+
+<hr>
+  <!--
   <h1>posts</h1>
   {{ range first 10 .Data.Pages }}
     {{ if eq .Type "posts"}}
@@ -13,6 +269,6 @@
       <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
     {{ end }}
   {{ end }}
-
+-->
 
 {{ partial "footer.html" . }}
