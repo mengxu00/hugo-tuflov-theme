@@ -5,7 +5,9 @@ date: 2020-02-18T16:00:33-07:00
 draft: false
 slug: "first"
 ---
-This is the first paragraph 
+This is an example post
+
+https://en.wikipedia.org/wiki/Writing
 
 Writing is a medium of human communication that represents language with signs and symbols. For languages that utilize a writing system, inscriptions can complement spoken language by creating a durable version of speech that can be stored for future reference or transmitted across distance. Writing, in other words, is not a language, but a tool used to make languages readable.[1] Within a language system, writing relies on many of the same structures as speech, such as vocabulary, grammar, and semantics, with the added dependency of a system of signs or symbols. The result of the activity of writing is called a text, and the interpreter or activator of this text is called a reader.[2]
 
